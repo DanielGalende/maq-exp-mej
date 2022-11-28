@@ -70,7 +70,7 @@ public class MaquinaExpendedoraMejorada {
             balanceClienteActual = balanceClienteActual - precioBillete;
         }
         else {
-            System.out.println("Necesitas introducir " + (precioBillete - balanceClienteActual) + " euros mas!");
+            System.out.println("Necesitas introducir " + cantidadDeDineroQueFalta + " euros mas!");
             
             
         }            
