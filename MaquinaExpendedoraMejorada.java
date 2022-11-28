@@ -97,4 +97,18 @@ public class MaquinaExpendedoraMejorada {
         balanceClienteActual = 0;
         return cantidadDeDineroADevolver;
     } 
+    
+    /**Al invocar el método sobre un objeto del tipo MaquinaExpendedoraMejorada se vacía todo el dinero que hay en ella (incluyendo los dos depósitos, es decir 
+    * ,si fuera el caso, incluyendo también el dinero que el usuario que esté usando la máquina en este momento haya metido y que no haya usado aún para comprar un billete).
+    *El método debe devolver la cantidad total de dinero extraída de la máquina.
+    *Solo se permite una instrucción return en el método que, además, debe ser la última del método.
+    */
+    public int vaciarDineroDeLaMaquina(){
+        
+        int dineroAcumulado = balanceClienteActual + totalDineroAcumulado;
+        balanceClienteActual = 0;
+        totalDineroAcumulado = 0;
+        
+        return dineroAcumulado;
+    }
 }
