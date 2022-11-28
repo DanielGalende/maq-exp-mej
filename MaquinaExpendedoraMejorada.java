@@ -25,6 +25,15 @@ public class MaquinaExpendedoraMejorada {
     }
 
     /**
+     * Nuevo constructor el cual el precio de billete es fijo, la estacion de origen es siempre la misma
+     * y la de destino tambien sea siempre la misma.
+     */
+    public MaquinaExpendedoraMejorada() {
+        precioBillete = 10;
+        estacionOrigen = "Leon";
+        estacionDestino = "Pucela";
+    }
+    /**
      * Devuelve el precio del billete
      */
     public int getPrecioBillete() {
