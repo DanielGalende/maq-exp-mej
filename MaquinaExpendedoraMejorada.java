@@ -108,6 +108,7 @@ public class MaquinaExpendedoraMejorada {
         int dineroAcumulado = balanceClienteActual + totalDineroAcumulado;
         if (balanceClienteActual != 0) {
             dineroAcumulado = -1;
+            System.out.println("Actualmente la máquina se encunetra en desuso por que aún se están haciendo operaciones");
         }
         else {
         balanceClienteActual = 0;
