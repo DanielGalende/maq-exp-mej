@@ -16,6 +16,7 @@ public class MaquinaExpendedoraMejorada {
     private boolean darPremios;
     // Indicar el máximo de billetes que se pueden vender
     private int numeroMaximo; 
+    
 
     /**
      * Crea una maquina expendedora de billetes de tren con el 
@@ -82,6 +83,10 @@ public class MaquinaExpendedoraMejorada {
     public void introducirDinero(int cantidadIntroducida) {
         if (cantidadIntroducida > 0) {
             balanceClienteActual = balanceClienteActual + cantidadIntroducida;
+            if (numeroMaximo <= 0) {
+                balanceClienteActual = 0;
+                System.out.println("No es posible introducir más dinero ya que no se pueden vender más billetes.");
+            }
         }
         else {
             System.out.println(cantidadIntroducida + " no es una cantidad de dinero valida.");
@@ -116,6 +121,7 @@ public class MaquinaExpendedoraMejorada {
             }
             if (numeroMaximo <= 0) {
                 System.out.println("Se han acabado los billetes lo sentimos mucho");
+                
             }
         }  
         else {
