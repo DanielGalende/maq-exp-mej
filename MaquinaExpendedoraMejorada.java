@@ -108,13 +108,12 @@ public class MaquinaExpendedoraMejorada {
             if (darPremios = true) {
                 double premio = precioBillete*0.25;
                 System.out.println("Ha ganado un premio con un descuento del 25% "+  premio  +" euros");
-
-            }  
-            else {
+            }
+        }  
+        else {
                 System.out.println("Necesitas introducir " + cantidadDeDineroQueFalta + " euros mas!");
 
-            }            
-        }
+        }            
     }
 
     /**
