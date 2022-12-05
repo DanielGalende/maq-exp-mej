@@ -12,6 +12,8 @@ public class MaquinaExpendedoraMejorada {
     private String estacionOrigen;
     // El destino del billete
     private String estacionDestino;
+    // Indicar si la máquina da premios o no
+    private boolean darPremios;
     
 
     /**
@@ -31,13 +33,14 @@ public class MaquinaExpendedoraMejorada {
      * Nuevo constructor el cual el precio de billete es fijo, la estacion de origen es siempre la misma
      * y la de destino tambien sea siempre la misma.
      */
-    public MaquinaExpendedoraMejorada() {
+    public MaquinaExpendedoraMejorada(boolean darLosPremios) {
         precioBillete = 10;
         balanceClienteActual = 0;
         totalDineroAcumulado = 0;
         numeroDeUsos = 0;
         estacionOrigen = "Leon";
         estacionDestino = "Pucela";
+        darPremios = darLosPremios;
     }
     /**
      * Devuelve el precio del billete
@@ -67,7 +70,7 @@ public class MaquinaExpendedoraMejorada {
         System.out.println("#El total de billetes vendidos son:");
         System.out.println(numeroDeUsos);
         
-    }
+}
     /**
      * Simula la introduccion de dinero por parte del cliente actual
      */
@@ -100,14 +103,18 @@ public class MaquinaExpendedoraMejorada {
             totalDineroAcumulado = totalDineroAcumulado + precioBillete;
             // Reduce el balance del cliente actual dejandole seguir utilizando la maquina
             balanceClienteActual = balanceClienteActual - precioBillete;
-        }
-        else {
+            if (darPremios = true) {
+            double premio = precioBillete*0.25;
+            System.out.println("Ha ganado un premio con un descuento del 25% "+  premio  +" euros");
+    
+        }  
+    else {
             System.out.println("Necesitas introducir " + cantidadDeDineroQueFalta + " euros mas!");
             
             
         }            
     }
-
+}
     /**
      * Cancela la operacion de compra del cliente actual y le
      * devuelve al cliente el dinero que ha introducido hasta el momento
