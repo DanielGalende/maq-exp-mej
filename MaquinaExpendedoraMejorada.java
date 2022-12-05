@@ -14,6 +14,8 @@ public class MaquinaExpendedoraMejorada {
     private String estacionDestino;
     // Indicar si la máquina da premios o no
     private boolean darPremios;
+    // Indicar el máximo de billetes que se pueden vender
+    private int numeroMaximo; 
 
     /**
      * Crea una maquina expendedora de billetes de tren con el 
@@ -33,7 +35,7 @@ public class MaquinaExpendedoraMejorada {
      * Nuevo constructor el cual el precio de billete es fijo, la estacion de origen es siempre la misma
      * y la de destino tambien sea siempre la misma.
      */
-    public MaquinaExpendedoraMejorada(boolean darLosPremios) {
+    public MaquinaExpendedoraMejorada(boolean darLosPremios, int numeroMaximoBilletes) {
         precioBillete = 10;
         balanceClienteActual = 0;
         totalDineroAcumulado = 0;
@@ -41,6 +43,7 @@ public class MaquinaExpendedoraMejorada {
         estacionOrigen = "Leon";
         estacionDestino = "Pucela";
         darPremios = darLosPremios;
+        numeroMaximo = numeroMaximoBilletes;
     }
 
     /**
@@ -105,13 +108,18 @@ public class MaquinaExpendedoraMejorada {
             totalDineroAcumulado = totalDineroAcumulado + precioBillete;
             // Reduce el balance del cliente actual dejandole seguir utilizando la maquina
             balanceClienteActual = balanceClienteActual - precioBillete;
-            if (darPremios = true) {
+            // Reduce en 1 el numero de billetes que esen a la venta
+            numeroMaximo =  numeroMaximo - 1;
+            if (darPremios == true) {
                 double premio = precioBillete*0.25;
                 System.out.println("Ha ganado un premio con un descuento del 25% "+  premio  +" euros");
             }
+            if (numeroMaximo <= 0) {
+                System.out.println("Se han acabado los billetes lo sentimos mucho");
+            }
         }  
         else {
-                System.out.println("Necesitas introducir " + cantidadDeDineroQueFalta + " euros mas!");
+            System.out.println("Necesitas introducir " + cantidadDeDineroQueFalta + " euros mas!");
 
         }            
     }
