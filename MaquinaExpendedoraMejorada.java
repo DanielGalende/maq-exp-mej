@@ -14,19 +14,19 @@ public class MaquinaExpendedoraMejorada {
     private String estacionDestino;
     // Indicar si la máquina da premios o no
     private boolean darPremios;
-    
 
     /**
      * Crea una maquina expendedora de billetes de tren con el 
      * precio del billete y el origen y destino dados. Se asume que el precio
      * del billete que se recibe es mayor que 0.
      */
-    public MaquinaExpendedoraMejorada(int precioDelBillete, String origen, String destino) {
+    public MaquinaExpendedoraMejorada(int precioDelBillete, String origen, String destino, boolean darLosPremios) {
         precioBillete = precioDelBillete;
         balanceClienteActual = 0;
         totalDineroAcumulado = 0;
         estacionOrigen = origen;
         estacionDestino = destino;
+        darPremios = darLosPremios;
     }
 
     /**
@@ -42,6 +42,7 @@ public class MaquinaExpendedoraMejorada {
         estacionDestino = "Pucela";
         darPremios = darLosPremios;
     }
+
     /**
      * Devuelve el precio del billete
      */
@@ -56,21 +57,22 @@ public class MaquinaExpendedoraMejorada {
         return balanceClienteActual;
     }
 
-    
     /**
      * Cuanta el numero de billetes vendidos.
      */
     public int getNumeroBilletesVendidos(){
         return numeroDeUsos;
     }
+
     /**
      *  Imprime el numero de billetes vendidos.
      */
     public void imprimirNumeroBilletesVendidos(){
         System.out.println("#El total de billetes vendidos son:");
         System.out.println(numeroDeUsos);
-        
-}
+
+    }
+
     /**
      * Simula la introduccion de dinero por parte del cliente actual
      */
@@ -87,7 +89,7 @@ public class MaquinaExpendedoraMejorada {
      * Imprime un billete para el cliente actual
      */
     public void imprimirBillete() {
-         
+
         int cantidadDeDineroQueFalta = precioBillete - balanceClienteActual;
         if (cantidadDeDineroQueFalta <= 0) {        
             // Simula la impresion de un billete
@@ -104,17 +106,17 @@ public class MaquinaExpendedoraMejorada {
             // Reduce el balance del cliente actual dejandole seguir utilizando la maquina
             balanceClienteActual = balanceClienteActual - precioBillete;
             if (darPremios = true) {
-            double premio = precioBillete*0.25;
-            System.out.println("Ha ganado un premio con un descuento del 25% "+  premio  +" euros");
-    
-        }  
-    else {
-            System.out.println("Necesitas introducir " + cantidadDeDineroQueFalta + " euros mas!");
-            
-            
-        }            
+                double premio = precioBillete*0.25;
+                System.out.println("Ha ganado un premio con un descuento del 25% "+  premio  +" euros");
+
+            }  
+            else {
+                System.out.println("Necesitas introducir " + cantidadDeDineroQueFalta + " euros mas!");
+
+            }            
+        }
     }
-}
+
     /**
      * Cancela la operacion de compra del cliente actual y le
      * devuelve al cliente el dinero que ha introducido hasta el momento
@@ -125,22 +127,22 @@ public class MaquinaExpendedoraMejorada {
         balanceClienteActual = 0;
         return cantidadDeDineroADevolver;
     } 
-    
+
     /**Al invocar el método sobre un objeto del tipo MaquinaExpendedoraMejorada se vacía todo el dinero que hay en ella (incluyendo los dos depósitos, es decir 
-    * ,si fuera el caso, incluyendo también el dinero que el usuario que esté usando la máquina en este momento haya metido y que no haya usado aún para comprar un billete).
-    *El método debe devolver la cantidad total de dinero extraída de la máquina.
-    *Solo se permite una instrucción return en el método que, además, debe ser la última del método.
-    */
+     * ,si fuera el caso, incluyendo también el dinero que el usuario que esté usando la máquina en este momento haya metido y que no haya usado aún para comprar un billete).
+     *El método debe devolver la cantidad total de dinero extraída de la máquina.
+     *Solo se permite una instrucción return en el método que, además, debe ser la última del método.
+     */
     public int vaciarDineroDeLaMaquina(){
-        
+
         int dineroAcumulado = balanceClienteActual + totalDineroAcumulado;
         if (balanceClienteActual != 0) {
             dineroAcumulado = -1;
             System.out.println("Actualmente la máquina se encunetra en desuso por que aún se están haciendo operaciones");
         }
         else {
-        balanceClienteActual = 0;
-        totalDineroAcumulado = 0;
+            balanceClienteActual = 0;
+            totalDineroAcumulado = 0;
         }
         return dineroAcumulado;
     }
