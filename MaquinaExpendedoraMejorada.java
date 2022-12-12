@@ -26,6 +26,7 @@ public class MaquinaExpendedoraMejorada {
         precioBillete = precioDelBillete;
         balanceClienteActual = 0;
         totalDineroAcumulado = 0;
+        numeroDeUsos = 0;
         estacionOrigen = origen;
         estacionDestino = destino;
         darPremios = darLosPremios;
@@ -122,7 +123,7 @@ public class MaquinaExpendedoraMejorada {
                 balanceClienteActual = balanceClienteActual - precioBillete;
                 // Reduce en 1 el numero de billetes que esen a la venta
                 numeroMaximo =  numeroMaximo - 1;
-                if (numeroDeUsos == 4) {
+                if (numeroDeUsos % 4 == 0) {
                     if (darPremios == true) {
                         double premio = precioBillete*0.25;
                         System.out.println("Ha ganado un premio con un descuento del 25% "+  premio  +" euros");  
