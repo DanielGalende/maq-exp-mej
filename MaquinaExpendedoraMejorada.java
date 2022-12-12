@@ -81,16 +81,19 @@ public class MaquinaExpendedoraMejorada {
      * Simula la introduccion de dinero por parte del cliente actual
      */
     public void introducirDinero(int cantidadIntroducida) {
-        if (cantidadIntroducida > 0) {
-            balanceClienteActual = balanceClienteActual + cantidadIntroducida;
-            if (numeroMaximo <= 0) {
-                balanceClienteActual = 0;
-                System.out.println("No es posible introducir más dinero ya que no se pueden vender más billetes.");
-            }
+        if (numeroMaximo <= 0) {
+            balanceClienteActual = 0;
+            System.out.println("No es posible introducir más dinero ya que no se pueden vender más billetes.");
         }
-        else {
-            System.out.println(cantidadIntroducida + " no es una cantidad de dinero valida.");
-        }        
+        else{
+            if (cantidadIntroducida > 0) {
+                balanceClienteActual = balanceClienteActual + cantidadIntroducida;
+
+            }
+            else {
+                System.out.println(cantidadIntroducida + " no es una cantidad de dinero valida.");
+            } 
+        }
     }
 
     /**
@@ -101,32 +104,35 @@ public class MaquinaExpendedoraMejorada {
         if (numeroMaximo <= 0){
             System.out.println("Lo sentimos mucho se han acabado los billetes");
         }
-        else if (cantidadDeDineroQueFalta <= 0 ) {        
-            // Simula la impresion de un billete
-            System.out.println("##################");
-            System.out.println("# Billete de tren:");
-            System.out.println("# De " + estacionOrigen + " a " + estacionDestino);
-            System.out.println("# " + precioBillete + " euros.");
-            System.out.println("##################");
-            System.out.println();
-            // Realiza una suma al numero de usos 
-            numeroDeUsos = numeroDeUsos + 1;
-            // Actualiza el total de dinero acumulado en la maquina
-            totalDineroAcumulado = totalDineroAcumulado + precioBillete;
-            // Reduce el balance del cliente actual dejandole seguir utilizando la maquina
-            balanceClienteActual = balanceClienteActual - precioBillete;
-            // Reduce en 1 el numero de billetes que esen a la venta
-            numeroMaximo =  numeroMaximo - 1;
-            if (darPremios == true) {
-                double premio = precioBillete*0.25;
-                System.out.println("Ha ganado un premio con un descuento del 25% "+  premio  +" euros");  
-            }
-        }  
-
         else {
-            System.out.println("Necesitas introducir " + cantidadDeDineroQueFalta + " euros mas!");
 
-        }
+            if (cantidadDeDineroQueFalta <= 0 ) {        
+                // Simula la impresion de un billete
+                System.out.println("##################");
+                System.out.println("# Billete de tren:");
+                System.out.println("# De " + estacionOrigen + " a " + estacionDestino);
+                System.out.println("# " + precioBillete + " euros.");
+                System.out.println("##################");
+                System.out.println();
+                // Realiza una suma al numero de usos 
+                numeroDeUsos = numeroDeUsos + 1;
+                // Actualiza el total de dinero acumulado en la maquina
+                totalDineroAcumulado = totalDineroAcumulado + precioBillete;
+                // Reduce el balance del cliente actual dejandole seguir utilizando la maquina
+                balanceClienteActual = balanceClienteActual - precioBillete;
+                // Reduce en 1 el numero de billetes que esen a la venta
+                numeroMaximo =  numeroMaximo - 1;
+                if (darPremios == true) {
+                    double premio = precioBillete*0.25;
+                    System.out.println("Ha ganado un premio con un descuento del 25% "+  premio  +" euros");  
+                }
+            }  
+
+            else {
+                System.out.println("Necesitas introducir " + cantidadDeDineroQueFalta + " euros mas!");
+
+            }
+        } 
 
     }
 
